@@ -6,12 +6,14 @@
     <title>Tejada Chapa y Pintura | Rodrigo Tejada - La Rioja</title>
     
 <!-- Open Graph / Meta Tags para Compartir en WhatsApp / Redes -->
+   <!-- Open Graph / Meta Tags para Compartir en WhatsApp / Redes -->
     <meta property="og:title" content="Tejada Chapa y Pintura - Rodrigo Tejada">
     <meta property="og:description" content="Taller de Chapa, Pintura al Horno y Detailing en La Rioja Capital. Pasaje Falucho 454.">
     <meta property="og:image" content="https://i.postimg.cc/9MZ496z5/tejada-500.png">
+    <meta property="og:url" content="https://intelliwebs.github.io/tejada/"> <!-- ⚠️ REEMPLAZA CON TU URL PÚBLICA REAL -->
     <meta property="og:type" content="website">
 
-    <!-- Twitter Card Meta Tags (Opcional para compatibilidad con otras plataformas) -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tejada Chapa y Pintura - Rodrigo Tejada">
     <meta name="twitter:description" content="Taller de Chapa, Pintura al Horno y Detailing en La Rioja Capital. Pasaje Falucho 454.">
@@ -418,7 +420,7 @@
                 console.error("Error al enviar:", error);
                 showToast("Surgió un inconveniente. Abridores la solicitud por WhatsApp...");
                 sendWhatsAppQuote();
-            } flexy {
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnHtml;
             }
