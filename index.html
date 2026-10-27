@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejada Chapa y Pintura | Rodrigo Tejada - La Rioja</title>
+    
+    <!-- Meta Tags para Compartir en WhatsApp / Redes -->
+    <meta property="og:title" content="Tejada Chapa y Pintura - Rodrigo Tejada">
+    <meta property="og:description" content="Taller de Chapa, Pintura al Horno y Detailing en La Rioja Capital. Pasaje Falucho 454.">
+    <meta property="og:image" content="https://i.postimg.cc/02S3hZ3V/image-(3).png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        racingDark: '#0a0d14',
+                        racingCard: '#121824',
+                        racingBorder: '#232d42',
+                        crimsonRed: '#ff003c',
+                        neonCyan: '#00f0ff',
+                        amberGold: '#ffb700'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0d14;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(18, 24, 36, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-red {
+            box-shadow: 0 0 35px -5px rgba(255, 0, 60, 0.35);
+        }
+    </style>
+</head>
+<body class="bg-racingDark text-gray-100 min-h-screen">
+
+    <!-- Toast de Notificación -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 px-5 py-3 rounded-xl glass-card border-l-4 border-crimsonRed flex items-center gap-3 shadow-2xl pointer-events-none">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-crimsonRed text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Mensaje aquí</span>
+    </div>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-racingBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3">
+                <img src="https://i.postimg.cc/RVBbq0mG/VERDETRANSPARENTE.png" alt="Tejada Chapa y Pintura Logo" class="h-12 w-auto object-contain">
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-wider text-white">TEJADA</span>
+                    <span class="text-[10px] tracking-widest text-crimsonRed font-bold uppercase -mt-1">Chapa & Pintura</span>
+                </div>
+            </a>
+
+            <!-- Enlaces Escritorio -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-300">
+                <a href="#inicio" class="hover:text-crimsonRed transition-colors">Inicio</a>
+                <a href="#servicios" class="hover:text-crimsonRed transition-colors">Servicios</a>
+                <a href="#cotizador" class="hover:text-crimsonRed transition-colors">Presupuesto</a>
+                <a href="#ubicacion" class="hover:text-crimsonRed transition-colors">Ubicación</a>
+            </div>
+
+            <!-- Botón WhatsApp Navbar -->
+            <a href="https://wa.me/5493804943279" target="_blank" class="hidden md:flex px-5 py-2.5 rounded-xl bg-gradient-to-r from-crimsonRed to-red-700 text-white font-bold text-xs uppercase tracking-wider hover:brightness-110 transition-all glow-red items-center gap-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Contactar a Rodrigo
+            </a>
+
+            <!-- Menú Mobile Toggle -->
+            <button id="menu-btn" class="md:hidden text-gray-300 text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-racingBorder px-6 py-6 flex flex-col gap-4 text-center font-bold">
+            <a href="#inicio" class="m-link text-gray-200 hover:text-crimsonRed">Inicio</a>
+            <a href="#servicios" class="m-link text-gray-200 hover:text-crimsonRed">Servicios</a>
+            <a href="#cotizador" class="m-link text-gray-200 hover:text-crimsonRed">Presupuesto</a>
+            <a href="#ubicacion" class="m-link text-gray-200 hover:text-crimsonRed">Ubicación</a>
+            <a href="https://wa.me/5493804943279" target="_blank" class="w-full py-3 rounded-xl bg-crimsonRed text-white flex items-center justify-center gap-2 mt-2">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Consultar por WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- INICIO / HERO -->
+    <section id="inicio" class="relative pt-28 sm:pt-36 pb-20 min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-crimsonRed/40 text-crimsonRed text-xs font-bold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-crimsonRed animate-ping"></span>
+                    Taller de Chapa, Pintura & Detailing en La Rioja
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                    Restauración y <br class="hidden sm:block">
+                    <span class="bg-gradient-to-r from-crimsonRed via-amberGold to-neonCyan bg-clip-text text-transparent">Pintura de Alta Gama</span>
+                </h1>
+
+                <p class="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Especialistas en desabollado de carrocerías, pintura al horno, tratamiento cerámico y corrección de laca. Devuélvele a tu vehículo el brillo y las líneas de fábrica.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#cotizador" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-crimsonRed to-red-700 text-white font-extrabold text-sm uppercase tracking-wider hover:brightness-110 transition-all glow-red flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Cotizar Trabajo
+                    </a>
+                    <a href="https://wa.me/5493804943279" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card border border-emerald-500/50 text-emerald-400 font-bold text-sm uppercase tracking-wider hover:bg-emerald-500/20 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Foto por WhatsApp
+                    </a>
+                </div>
+
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-racingBorder text-center lg:text-left">
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-white">Rodrigo Tejada</div>
+                        <div class="text-xs text-gray-400 font-medium">Atención Personalizada</div>
+                    </div>
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-crimsonRed">Garantía</div>
+                        <div class="text-xs text-gray-400 font-medium">Acabados de Fábrica</div>
+                    </div>
+                    <div>
+                        <div class="text-xl sm:text-2xl font-black text-neonCyan">La Rioja</div>
+                        <div class="text-xs text-gray-400 font-medium">Pasaje Falucho 454</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen Principal Hero -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-md h-[400px] rounded-3xl overflow-hidden border-2 border-racingBorder shadow-2xl group">
+                    <img src="https://images.squarespace-cdn.com/content/v1/586c39f2be6594727095032f/1508270912227-Y8KQN5IFEF3HU7TGXP2E/que-es-detailing-amarante-detailing.jpg" alt="Detailing y Pintura Profesional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-racingDark via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 glass-card p-4 rounded-2xl border border-white/10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-crimsonRed/20 text-crimsonRed flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-spray-can"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-white">Tratamientos Cerámicos & Corrección</div>
+                                <div class="text-[10px] text-gray-400">Protección y brillo espejo garantizado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-20 bg-racingCard/40 border-t border-racingBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-crimsonRed uppercase tracking-widest px-3 py-1 rounded-full bg-crimsonRed/10 border border-crimsonRed/30">
+                    Especialidades del Taller
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-3">
+                    Servicios de <span class="text-crimsonRed">Alta Calidad</span>
+                </h2>
+                <p class="text-gray-400 mt-3 text-base">
+                    Utilizamos insumos premium e instrumental especializado para asegurar un acabado impecable.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="glass-card p-6 rounded-2xl border border-racingBorder hover:border-crimsonRed transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-crimsonRed/10 border border-crimsonRed/30 text-crimsonRed flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-car-burst"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Desabollado & Chapa</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Reparación de golpes, abolladuras de gran envergadura y encuadre estructural con precisión milimétrica.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border border-racingBorder hover:border-amberGold transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold/10 border border-amberGold/30 text-amberGold flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-fire-burner"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pintura al Horno</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Cabina de pintado profesional. Igualación exacta de color por codificación original de fábrica.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border border-racingBorder hover:border-neonCyan transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-neonCyan/10 border border-neonCyan/30 text-neonCyan flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Detailing & Pulido</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Eliminación de micro-rayones (swirls), lustrado multicapa y sellado cerámico para máxima protección de pintura.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl border border-racingBorder hover:border-emerald-400 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-400/10 border border-emerald-400/30 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Paragolpes & Plásticos</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Soldadura de plásticos, restauración de ópticas y reparación de paragolpes fisurados.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR & PLANILLA SPREADSHEET -->
+    <section id="cotizador" class="py-20 bg-racingDark border-t border-racingBorder">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-racingBorder shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-60 h-60 bg-crimsonRed/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black text-white">Solicita tu Presupuesto Express</h2>
+                    <p class="text-gray-400 text-sm mt-2">Completa el formulario y tu solicitud se guardará en la planilla de Rodrigo para responderte rápidamente.</p>
+                </div>
+
+                <form id="quote-form" onsubmit="submitQuoteToGoogleSheet(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Tu Nombre *</label>
+                            <input type="text" id="q-nombre" required placeholder="Ej: Lucas Gómez" class="w-full px-4 py-3 rounded-xl bg-racingDark border border-racingBorder text-white text-sm focus:outline-none focus:border-crimsonRed">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Vehículo (Marca y Modelo) *</label>
+                            <input type="text" id="q-auto" required placeholder="Ej: VW Gol 2018" class="w-full px-4 py-3 rounded-xl bg-racingDark border border-racingBorder text-white text-sm focus:outline-none focus:border-crimsonRed">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Servicio Requerido *</label>
+                        <select id="q-servicio" required class="w-full px-4 py-3 rounded-xl bg-racingDark border border-racingBorder text-white text-sm focus:outline-none focus:border-crimsonRed">
+                            <option value="Reparación de Golpe / Chapa">Reparación de Golpe / Chapa</option>
+                            <option value="Pintura de Pieza Entera (Paragolpes, Capot, Puerta)">Pintura de Pieza Entera (Paragolpes, Capot, Puerta)</option>
+                            <option value="Pintura General Completa">Pintura General Completa</option>
+                            <option value="Pulido & Tratamiento Cerámico (Detailing)">Pulido & Tratamiento Cerámico (Detailing)</option>
+                            <option value="Reparación de Paragolpes Plástico">Reparación de Paragolpes Plástico</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Detalles del Daño / Consulta *</label>
+                        <textarea id="q-mensaje" rows="3" required placeholder="Ej: Tengo un rayón profundo en la puerta izquierda y un abollón en el paragolpes delantero..." class="w-full px-4 py-3 rounded-xl bg-racingDark border border-racingBorder text-white text-sm focus:outline-none focus:border-crimsonRed"></textarea>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-crimsonRed to-red-700 text-white font-extrabold text-sm uppercase tracking-wider hover:brightness-110 transition-all glow-red flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Guardar Presupuesto en Planilla
+                        </button>
+
+                        <button type="button" onclick="sendWhatsAppQuote()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> O Enviar Directo por WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN & CONTACTO -->
+    <section id="ubicacion" class="py-20 bg-racingCard/30 border-t border-racingBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold text-crimsonRed uppercase tracking-widest px-3 py-1 rounded-full bg-crimsonRed/10 border border-crimsonRed/30">
+                        Visítanos en el Taller
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-white">Ubicación & Contacto</h2>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-crimsonRed/10 border border-crimsonRed/30 flex items-center justify-center text-crimsonRed flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Dirección del Taller</div>
+                                <div class="text-base font-bold text-white">Pasaje Falucho 454</div>
+                                <div class="text-xs text-gray-400">La Rioja Capital, Argentina</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Titular / WhatsApp Directo</div>
+                                <a href="https://wa.me/5493804943279" target="_blank" class="text-base font-bold text-white hover:text-emerald-400 transition-colors">
+                                    Rodrigo Tejada: +54 9 3804 94-3279
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-neonCyan/10 border border-neonCyan/30 flex items-center justify-center text-neonCyan flex-shrink-0">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Instagram Oficial</div>
+                                <a href="https://www.instagram.com/tejada.chapaypintura?vrfl=MXRhbzNueGtpdTN3cQ%3D%3D" target="_blank" class="text-base font-bold text-white hover:text-neonCyan transition-colors">
+                                    @tejada.chapaypintura
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Iframe -->
+                <div class="lg:col-span-7 rounded-3xl overflow-hidden border border-racingBorder h-[380px] shadow-2xl">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3475.234123!2d-66.856!3d-29.413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9427da3f8202b93d%3A0x2a17725555555555!2sPasaje%20Falucho%20454%2C%20La%20Rioja!5e0!3m2!1ses!2sar!4v1680000000000!5m2!1ses!2sar" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-racingDark border-t border-racingBorder text-xs text-gray-500 text-center">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <img src="https://i.postimg.cc/PrjFNqHy/VERDE.png" alt="Logo" class="h-8 w-auto">
+                <span class="text-white font-bold">TEJADA Chapa y Pintura</span>
+            </div>
+            <div>
+                © 2026 Rodrigo Tejada. La Rioja Capital, Argentina.
+            </div>
+            <div class="flex gap-4 text-base">
+                <a href="https://www.instagram.com/tejada.chapaypintura?vrfl=MXRhbzNueGtpdTN3cQ%3D%3D" target="_blank" class="text-gray-400 hover:text-crimsonRed">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5493804943279" target="_blank" class="text-gray-400 hover:text-emerald-400">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // URL DE TU GOOGLE APPS SCRIPT WEB APP
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdj9dN0MYhOklte_OdEZ7-KF723GD5tNLi0ra0c9CdCH1E3vHVel0728OmBYjCl_abpA/exec';
+
+        // GUARDAR PRESUPUESTO EN GOOGLE SHEETS
+        async function submitQuoteToGoogleSheet(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            const payload = {
+                nombre: document.getElementById('q-nombre').value,
+                vehiculo: document.getElementById('q-auto').value,
+                servicio: document.getElementById('q-servicio').value,
+                mensaje: document.getElementById('q-mensaje').value
+            };
+
+            // Estado de carga
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Guardando en Planilla...`;
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                showToast("¡Solicitud guardada en la planilla! Rodrigo te contactará pronto.");
+                document.getElementById('quote-form').reset();
+            } catch (error) {
+                console.error("Error al enviar:", error);
+                showToast("Surgió un inconveniente. Abridores la solicitud por WhatsApp...");
+                sendWhatsAppQuote();
+            } flexy {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        }
+
+        // ENVIAR POR WHATSAPP DIRECTO
+        function sendWhatsAppQuote() {
+            const nombre = document.getElementById('q-nombre').value || 'Cliente';
+            const auto = document.getElementById('q-auto').value || 'Sin especificar';
+            const servicio = document.getElementById('q-servicio').value;
+            const mensaje = document.getElementById('q-mensaje').value || 'Sin detalles';
+
+            const text = `Hola Rodrigo! Mi nombre es ${nombre}. Quisiera consultar por un presupuesto para mi vehículo ${auto}.
+
+- *Servicio:* ${servicio}
+- *Detalles:* ${mensaje}`;
+
+            window.open(`https://wa.me/5493804943279?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // MOSTRAR NOTIFICACIONES TOAST
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // TOGGLE MENÚ MOBILE
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.m-link').forEach(l => {
+            l.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>
